@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Prosper Construction Company Ltd – Premier construction, civil engineering & infrastructure development in Kigali, Rwanda. Building a better tomorrow." />
+  <meta name="keywords" content="construction company Rwanda, civil engineering Kigali, building contractor Rwanda, Prosper Construction" />
+  <meta property="og:title" content="Prosper Construction Company Ltd" />
+  <meta property="og:description" content="Building the Future of Rwanda – Quality construction & engineering solutions in Kigali." />
+  <title>Prosper Construction Company Ltd | Kigali, Rwanda</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#050d1a',
+              900: '#0a1628',
+              800: '#0f2040',
+              700: '#162d58',
+              600: '#1e3d70',
+            },
+            brand: {
+              orange: '#f97316',
+              'orange-dark': '#ea580c',
+              'orange-light': '#fdba74',
+            },
+            slate: {
+              steel: '#8fa3bf',
+            }
+          },
+          fontFamily: {
+            display: ['"Barlow Condensed"', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif'],
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.7s ease forwards',
+            'fade-in': 'fadeIn 0.6s ease forwards',
+            'slide-right': 'slideRight 0.7s ease forwards',
+            'count-up': 'countUp 2s ease forwards',
+            'loader-bar': 'loaderBar 1.8s ease-in-out forwards',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(40px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideRight: {
+              '0%': { opacity: '0', transform: 'translateX(-40px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            },
+            loaderBar: {
+              '0%': { width: '0%' },
+              '100%': { width: '100%' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background-color: #050d1a; color: #e2e8f0; overflow-x: hidden; }
+
+    /* ── LOADER ───────────────────────────── */
+    #page-loader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #050d1a;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #page-loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.5rem; font-weight: 900; letter-spacing: 0.05em;
+      color: #fff;
+    }
+    .loader-logo span { color: #f97316; }
+    .loader-track {
+      width: 240px; height: 3px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 9999px;
+      margin-top: 1.5rem; overflow: hidden;
+    }
+    .loader-bar {
+      height: 100%; background: #f97316;
+      border-radius: 9999px;
+      animation: loaderBar 1.6s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    .loader-text {
+      margin-top: 1rem;
+      font-size: 0.75rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #64748b;
+    }
+
+    /* ── SCROLL REVEAL ───────────────────── */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── NAV ─────────────────────────────── */
+    #navbar {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
+      padding: 1.25rem 0;
+    }
+    #navbar.scrolled {
+      background: rgba(5, 13, 26, 0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(249,115,22,0.3), 0 4px 30px rgba(0,0,0,0.5);
+      padding: 0.75rem 0;
+    }
+    .nav-link {
+      position: relative; font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem; font-weight: 500; letter-spacing: 0.04em;
+      color: #94a3b8; text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; bottom: -2px;
+      width: 0; height: 1.5px; background: #f97316;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover { color: #fff; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ── HERO ────────────────────────────── */
+    .hero-bg {
+      background:
+        linear-gradient(135deg, rgba(5,13,26,0.92) 0%, rgba(10,22,40,0.85) 50%, rgba(249,115,22,0.08) 100%),
+        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1800&q=80&auto=format') center/cover no-repeat;
+      min-height: 100vh;
+    }
+    .hero-grid-overlay {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(249,115,22,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249,115,22,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 9999px;
+      padding: 0.35rem 1rem;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: #fdba74;
+    }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+    .orange-stroke {
+      -webkit-text-stroke: 2px #f97316;
+      color: transparent;
+    }
+    .stat-card {
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .stat-card:hover { border-color: rgba(249,115,22,0.4); background: rgba(249,115,22,0.06); }
+
+    /* ── BUTTONS ─────────────────────────── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #fff; font-weight: 600; font-size: 0.9rem;
+      padding: 0.85rem 2rem; border-radius: 6px;
+      text-decoration: none; transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(249,115,22,0.35);
+      border: none; cursor: pointer; white-space: nowrap;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(249,115,22,0.5);
+      background: linear-gradient(135deg, #fb923c, #f97316);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: #e2e8f0; font-weight: 500; font-size: 0.9rem;
+      padding: 0.85rem 2rem; border-radius: 6px;
+      text-decoration: none; transition: all 0.25s ease;
+      cursor: pointer; background: transparent; white-space: nowrap;
+    }
+    .btn-outline:hover { border-color: #f97316; color: #f97316; background: rgba(249,115,22,0.06); }
+
+    /* ── SECTION ─────────────────────────── */
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.25);
+      border-radius: 9999px; padding: 0.3rem 0.9rem;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: #f97316;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; line-height: 1.05;
+    }
+
+    /* ── CARDS ───────────────────────────── */
+    .glass-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      transition: border-color 0.3s, transform 0.3s, background 0.3s;
+    }
+    .glass-card:hover {
+      border-color: rgba(249,115,22,0.35);
+      background: rgba(249,115,22,0.04);
+      transform: translateY(-4px);
+    }
+    .service-icon-wrap {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, rgba(249,115,22,0.15), rgba(249,115,22,0.05));
+      border: 1px solid rgba(249,115,22,0.25);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── PROJECT CARDS ───────────────────── */
+    .project-card { border-radius: 16px; overflow: hidden; position: relative; }
+    .project-card img { transition: transform 0.5s ease; }
+    .project-card:hover img { transform: scale(1.07); }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(5,13,26,0.95) 0%, rgba(5,13,26,0.2) 60%, transparent 100%);
+      transition: background 0.3s;
+    }
+
+    /* ── TESTIMONIALS ────────────────────── */
+    .testi-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .testi-card:hover { border-color: rgba(249,115,22,0.3); transform: translateY(-3px); }
+
+    /* ── FORM ────────────────────────────── */
+    .form-input {
+      width: 100%; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 0.85rem 1rem;
+      color: #e2e8f0; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; outline: none;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .form-input::placeholder { color: #475569; }
+    .form-input:focus { border-color: #f97316; background: rgba(249,115,22,0.04); }
+    textarea.form-input { resize: vertical; min-height: 120px; }
+    label { display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; color: #94a3b8; margin-bottom: 0.4rem; }
+
+    /* ── FOOTER ──────────────────────────── */
+    .footer-link { color: #64748b; font-size: 0.875rem; text-decoration: none; transition: color 0.2s; }
+    .footer-link:hover { color: #f97316; }
+
+    /* ── WHATSAPP FLOAT ──────────────────── */
+    #whatsapp-btn {
+      position: fixed; bottom: 1.75rem; right: 1.75rem; z-index: 200;
+      width: 56px; height: 56px; border-radius: 9999px;
+      background: #25d366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    #whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.6); }
+    #whatsapp-btn::before {
+      content: 'Chat with us';
+      position: absolute; right: 68px;
+      background: #25d366; color: #fff;
+      font-size: 0.75rem; font-weight: 600;
+      padding: 0.35rem 0.75rem; border-radius: 6px;
+      white-space: nowrap; opacity: 0;
+      transition: opacity 0.25s;
+      pointer-events: none;
+    }
+    #whatsapp-btn:hover::before { opacity: 1; }
+
+    /* ── MOBILE NAV ──────────────────────── */
+    #mobile-menu {
+      display: none; flex-direction: column; gap: 0;
+      background: rgba(5,13,26,0.98);
+      border-top: 1px solid rgba(249,115,22,0.2);
+      padding: 1rem 0;
+    }
+    #mobile-menu.open { display: flex; }
+    .mobile-nav-link {
+      padding: 0.75rem 1.5rem; font-size: 1rem;
+      color: #94a3b8; font-weight: 500;
+      text-decoration: none; transition: color 0.2s, background 0.2s;
+    }
+    .mobile-nav-link:hover { color: #f97316; background: rgba(249,115,22,0.06); }
+
+    /* ── DIVIDER ─────────────────────────── */
+    .orange-divider {
+      width: 60px; height: 4px;
+      background: linear-gradient(90deg, #f97316, #ea580c);
+      border-radius: 9999px;
+    }
+
+    /* ── MAP ─────────────────────────────── */
+    .map-container { border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); }
+
+    /* ── COUNTER ─────────────────────────── */
+    .counter-value { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; }
+
+    /* ── ZIGZAG SECTION ──────────────────── */
+    .zz-line {
+      width: 100%; height: 40px;
+      background: linear-gradient(to bottom right, transparent 49.5%, #0a1628 50%) left,
+                  linear-gradient(to bottom left, transparent 49.5%, #0a1628 50%) right;
+      background-size: 30px 100%;
+      background-repeat: repeat-x;
+    }
+
+    /* Toast notification */
+    #toast {
+      position: fixed; bottom: 5rem; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: #15803d; color: #fff;
+      padding: 0.75rem 1.5rem; border-radius: 8px;
+      font-size: 0.875rem; font-weight: 500;
+      opacity: 0; transition: all 0.3s ease; z-index: 999; pointer-events: none;
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: clamp(3rem, 14vw, 5rem); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     PAGE LOADER
+═══════════════════════════════════════ -->
+<div id="page-loader">
+  <div class="loader-logo">PROSPER <span>CONSTRUCTION</span></div>
+  <div style="font-size:0.7rem;letter-spacing:0.2em;color:#475569;margin-top:0.4rem;text-transform:uppercase;">Building Rwanda's Future</div>
+  <div class="loader-track"><div class="loader-bar"></div></div>
+  <div class="loader-text">Loading...</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#home" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg flex items-center justify-center shadow-lg shadow-orange-900/40 group-hover:shadow-orange-500/40 transition-shadow">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div>
+        <div class="font-display font-900 text-white text-lg leading-none" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;letter-spacing:0.03em;">PROSPER <span class="text-orange-400">CO.</span></div>
+        <div style="font-size:0.58rem;letter-spacing:0.12em;color:#64748b;text-transform:uppercase;">Construction Ltd</div>
+      </div>
+    </a>
+
+    <!-- Desktop Links -->
+    <div class="hidden md:flex items-center gap-7">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#testimonials" class="nav-link">Testimonials</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <!-- CTA -->
+    <div class="hidden md:flex items-center gap-3">
+      <a href="tel:+250799355836" class="flex items-center gap-2 text-sm text-slate-400 hover:text-orange-400 transition-colors">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+        +250 799 355 836
+      </a>
+      <a href="#contact" class="btn-primary py-2 px-4 text-sm">Get a Quote</a>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="hamburger" class="md:hidden text-white p-2" onclick="toggleMenu()" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu">
+    <a href="#about" class="mobile-nav-link" onclick="toggleMenu()">About</a>
+    <a href="#services" class="mobile-nav-link" onclick="toggleMenu()">Services</a>
+    <a href="#projects" class="mobile-nav-link" onclick="toggleMenu()">Projects</a>
+    <a href="#testimonials" class="mobile-nav-link" onclick="toggleMenu()">Testimonials</a>
+    <a href="#contact" class="mobile-nav-link" onclick="toggleMenu()">Contact</a>
+    <div class="px-6 pt-2 pb-1">
+      <a href="#contact" class="btn-primary w-full justify-center">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════ -->
+<section id="home" class="hero-bg relative flex flex-col justify-center" style="min-height:100vh;">
+  <div class="hero-grid-overlay"></div>
+
+  <!-- Decorative diagonal accent -->
+  <div class="absolute right-0 top-0 w-1/3 h-full opacity-10 pointer-events-none" style="background: linear-gradient(135deg, transparent 60%, rgba(249,115,22,0.4) 100%);"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 pt-28 pb-20 w-full">
+    <div class="max-w-3xl">
+      <!-- Badge -->
+      <div class="hero-badge mb-6 reveal" style="animation-delay:0.1s">
+        <div class="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
+        Kigali, Rwanda — Est. 2010
+      </div>
+
+      <!-- Headline -->
+      <h1 class="hero-title text-white mb-4 reveal" style="font-size: clamp(3.5rem, 9vw, 7rem); animation-delay:0.2s;">
+        BUILDING THE<br/>
+        <span class="orange-stroke">FUTURE</span> OF<br/>
+        RWANDA
+      </h1>
+
+      <!-- Tagline -->
+      <p class="text-slate-300 text-lg md:text-xl max-w-xl leading-relaxed mb-10 reveal" style="animation-delay:0.35s;">
+        From foundations to skylines — Prosper Construction delivers world-class residential, commercial, and infrastructure projects with precision and pride.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4 mb-16 reveal" style="animation-delay:0.5s">
+        <a href="#contact" class="btn-primary text-base">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Get a Free Quote
+        </a>
+        <a href="#projects" class="btn-outline text-base">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          View Our Projects
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-4 max-w-lg reveal" style="animation-delay:0.6s">
+        <div class="stat-card text-center">
+          <div class="counter-value text-3xl text-white" data-target="150">0</div>
+          <div class="text-xs text-slate-400 mt-1">Projects Done</div>
+        </div>
+        <div class="stat-card text-center">
+          <div class="counter-value text-3xl text-white" data-target="14">0</div>
+          <div class="text-xs text-slate-400 mt-1">Years Experience</div>
+        </div>
+        <div class="stat-card text-center">
+          <div class="counter-value text-3xl text-white" data-target="98">0</div>
+          <div class="text-xs text-slate-400 mt-1">% Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+    <span class="text-xs tracking-widest uppercase text-slate-400">Scroll</span>
+    <div class="w-px h-12 bg-gradient-to-b from-orange-400 to-transparent"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     ABOUT SECTION
+═══════════════════════════════════════ -->
+<section id="about" style="background: #0a1628;" class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Image collage -->
+      <div class="relative reveal-left">
+        <div class="relative rounded-2xl overflow-hidden aspect-[4/3]">
+          <img src="https://images.unsplash.com/photo-1590247813693-5541d1c609fd?w=800&q=80&auto=format"
+               alt="Construction team" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-900/70 to-transparent"></div>
+        </div>
+        <!-- Floating badge -->
+        <div class="absolute -bottom-6 -right-4 md:-right-10 glass-card p-5 rounded-2xl flex items-center gap-4 shadow-2xl">
+          <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-white" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;">ISO Certified</div>
+            <div class="text-xs text-slate-400">Quality Standards</div>
+          </div>
+        </div>
+        <!-- Decorative element -->
+        <div class="absolute -top-5 -left-5 w-20 h-20 border-2 border-orange-500/30 rounded-xl -z-10"></div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="reveal-right">
+        <span class="section-tag mb-4">About Us</span>
+        <h2 class="section-title text-white text-5xl md:text-6xl mb-4">
+          Rwanda's Trusted<br/><span class="text-orange-400">Construction</span> Partner
+        </h2>
+        <div class="orange-divider mb-6"></div>
+        <p class="text-slate-300 leading-relaxed mb-6">
+          Founded in Kigali, Prosper Construction Company Ltd has grown into one of Rwanda's most respected construction and engineering firms. For over a decade, we've transformed blueprints into lasting structures — from elegant homes to critical public infrastructure.
+        </p>
+        <p class="text-slate-400 leading-relaxed mb-8">
+          Our multidisciplinary team of engineers, architects, and skilled tradespeople combines local knowledge with international best practices to deliver projects that stand the test of time.
+        </p>
+
+        <!-- Mission / Vision cards -->
+        <div class="grid sm:grid-cols-2 gap-4 mb-8">
+          <div class="glass-card p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-6 h-6 text-orange-400">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <span class="font-semibold text-white text-sm">Our Mission</span>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed">To deliver excellence in every project, building structures that empower communities and last generations.</p>
+          </div>
+          <div class="glass-card p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-6 h-6 text-orange-400">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <span class="font-semibold text-white text-sm">Our Vision</span>
+            </div>
+            <p class="text-slate-400 text-sm leading-relaxed">To be the leading construction company in East Africa, setting benchmarks for quality, sustainability, and innovation.</p>
+          </div>
+        </div>
+
+        <!-- Why Choose Us -->
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div><span class="text-white font-medium">Industry Expertise</span> <span class="text-slate-400 text-sm">— Certified engineers with 14+ years of hands-on experience.</span></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div><span class="text-white font-medium">On-Time Delivery</span> <span class="text-slate-400 text-sm">— Rigorous project management ensuring deadlines are met.</span></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div><span class="text-white font-medium">Transparent Pricing</span> <span class="text-slate-400 text-sm">— No hidden costs. Detailed quotes before work begins.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SERVICES SECTION
+═══════════════════════════════════════ -->
+<section id="services" style="background: #050d1a;" class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="text-center mb-16 reveal">
+      <span class="section-tag mb-4">What We Do</span>
+      <h2 class="section-title text-white text-5xl md:text-6xl mt-3 mb-4">Our Core <span class="text-orange-400">Services</span></h2>
+      <p class="text-slate-400 max-w-xl mx-auto text-lg">Comprehensive construction and engineering solutions tailored to your needs — from concept to completion.</p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Service 1 -->
+      <div class="glass-card p-7 reveal" style="transition-delay:0s">
+        <div class="service-icon-wrap mb-5">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3 class="text-white font-semibold text-xl mb-3" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:0.02em;">Building Construction</h3>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4">Residential homes, commercial complexes, and multi-story buildings designed for durability, functionality, and modern aesthetics.</p>
+        <a href="#contact" class="text-orange-400 text-sm font-medium flex items-center gap-1 hover:gap-3 transition-all">
+          Get Quote <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="glass-card p-7 reveal" style="transition-delay:0.1s">
+        <div class="service-icon-wrap mb-5">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8">
+            <path d="M2 20h20M4 20V10l8-6 8 6v10M10 20v-6h4v6"/>
+          </svg>
+        </div>
+        <h3 class="text-white font-semibold text-xl mb-3" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:0.02em;">Civil Engineering</h3>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4">Bridges, drainage systems, earthworks, retaining walls, and foundations — engineered to the highest structural standards.</p>
+        <a href="#contact" class="text-orange-400 text-sm font-medium flex items-center gap-1 hover:gap-3 transition-all">
+          Get Quote <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="glass-card p-7 reveal" style="transition-delay:0.2s">
+        <div class="service-icon-wrap mb-5">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8">
+            <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <h3 class="text-white font-semibold text-xl mb-3" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:0.02em;">Infrastructure Dev</h3>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4">Roads, utilities, water systems, and public facilities. We build the infrastructure that keeps Rwanda moving forward.</p>
+        <a href="#contact" class="text-orange-400 text-sm font-medium flex items-center gap-1 hover:gap-3 transition-all">
+          Get Quote <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="glass-card p-7 reveal" style="transition-delay:0.3s">
+        <div class="service-icon-wrap mb-5">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8">
+            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <h3 class="text-white font-semibold text-xl mb-3" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:0.02em;">Renovation & Maintenance</h3>
+        <p class="text-slate-400 text-sm leading-relaxed mb-4">Breathe new life into existing structures. We handle interior upgrades, structural repairs, facade works, and routine maintenance.</p>
+        <a href="#contact" class="text-orange-400 text-sm font-medium flex items-center gap-1 hover:gap-3 transition-all">
+          Get Quote <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mid CTA banner -->
+    <div class="mt-14 rounded-2xl overflow-hidden relative reveal">
+      <div style="background: linear-gradient(135deg, #0f2040 0%, #162d58 60%, rgba(249,115,22,0.15) 100%); border: 1px solid rgba(249,115,22,0.2);" class="p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h3 class="text-2xl md:text-3xl font-bold text-white" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;">Have a project in mind?</h3>
+          <p class="text-slate-400 mt-1">Let's discuss your vision. Our team is ready to bring it to life.</p>
+        </div>
+        <a href="#contact" class="btn-primary flex-shrink-0">Schedule a Consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     PROJECTS / PORTFOLIO
+═══════════════════════════════════════ -->
+<section id="projects" style="background: #0a1628;" class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6 reveal">
+      <div>
+        <span class="section-tag mb-4">Portfolio</span>
+        <h2 class="section-title text-white text-5xl md:text-6xl mt-3">Our <span class="text-orange-400">Projects</span></h2>
+        <div class="orange-divider mt-4"></div>
+      </div>
+      <p class="text-slate-400 max-w-sm md:text-right">A showcase of our landmark projects across Rwanda and the East African region.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Project 1 -->
+      <div class="project-card glass-card reveal" style="transition-delay:0s">
+        <div class="relative aspect-[4/3] overflow-hidden rounded-t-2xl">
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&auto=format" alt="Kigali Residential Complex" class="w-full h-full object-cover" />
+          <div class="project-overlay"></div>
+          <div class="absolute top-4 left-4">
+            <span class="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Residential</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-white font-semibold text-lg mb-1" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;">Kigali Residential Estate</h3>
+          <p class="text-slate-400 text-sm mb-3">A 48-unit modern residential complex in Kiyovu, featuring contemporary design and premium finishes.</p>
+          <div class="flex items-center gap-4 text-xs text-slate-500">
+            <span class="flex items-center gap-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Kiyovu, Kigali</span>
+            <span>Completed 2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card glass-card reveal" style="transition-delay:0.1s">
+        <div class="relative aspect-[4/3] overflow-hidden rounded-t-2xl">
+          <img src="https://images.unsplash.com/photo-1454166155302-ef4863c27e70?w=600&q=80&auto=format" alt="Office Complex" class="w-full h-full object-cover" />
+          <div class="project-overlay"></div>
+          <div class="absolute top-4 left-4">
+            <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Commercial</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-white font-semibold text-lg mb-1" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;">Nyarutarama Office Park</h3>
+          <p class="text-slate-400 text-sm mb-3">A 6-story commercial office tower with underground parking, green spaces, and smart-building technology.</p>
+          <div class="flex items-center gap-4 text-xs text-slate-500">
+            <span class="flex items-center gap-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Nyarutarama, Kigali</span>
+            <span>Completed 2022</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card glass-card reveal" style="transition-delay:0.2s">
+        <div class="relative aspect-[4/3] overflow-hidden rounded-t-2xl">
+          <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80&auto=format" alt="Road Infrastructure" class="w-full h-full object-cover" />
+          <div class="project-overlay"></div>
+          <div class="absolute top-4 left-4">
+            <span class="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Infrastructure</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-white font-semibold text-lg mb-1" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;">Gasabo Road Upgrade</h3>
+          <p class="text-slate-400 text-sm mb-3">12km of road rehabilitation, complete with modern drainage, street lighting, and pedestrian walkways.</p>
+          <div class="flex items-center gap-4 text-xs text-slate-500">
+            <span class="flex items-center gap-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Gasabo, Kigali</span>
+            <span>Completed 2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card glass-card reveal" style="transition-delay:0.1s">
+        <div class="relative aspect-[4/3] overflow-hidden rounded-t-2xl">
+          <img src="https://images.unsplash.com/photo-1513880989635-6eb491ce7f5b?w=600&q=80&auto=format" alt="Hospital" class="w-full h-full object-cover" />
+          <div class="project-overlay"></div>
+          <div class="absolute top-4 left-4">
+            <span class="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Public</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-white font-semibold text-lg mb-1" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;">Kicukiro Health Center</h3>
+          <p class="text-slate-400 text-sm mb-3">A modern 120-bed health facility built to international healthcare standards, serving over 50,000 residents.</p>
+          <div class="flex items-center gap-4 text-xs text-slate-500">
+            <span class="flex items-center gap-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Kicukiro, Kigali</span>
+            <span>Completed 2021</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card glass-card reveal" style="transition-delay:0.2s">
+        <div class="relative aspect-[4/3] overflow-hidden rounded-t-2xl">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80&auto=format" alt="Villa" class="w-full h-full object-cover" />
+          <div class="project-overlay"></div>
+          <div class="absolute top-4 left-4">
+            <span class="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Residential</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-white font-semibold text-lg mb-1" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;">Kimihurura Luxury Villas</h3>
+          <p class="text-slate-400 text-sm mb-3">Exclusive 5-bedroom villas with private pools, landscaped gardens, and panoramic Kigali views.</p>
+          <div class="flex items-center gap-4 text-xs text-slate-500">
+            <span class="flex items-center gap-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Kimihurura, Kigali</span>
+            <span>Completed 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card glass-card reveal" style="transition-delay:0.3s">
+        <div class="relative aspect-[4/3] overflow-hidden rounded-t-2xl">
+          <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=600&q=80&auto=format" alt="Bridge" class="w-full h-full object-cover" />
+          <div class="project-overlay"></div>
+          <div class="absolute top-4 left-4">
+            <span class="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Civil Eng.</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-white font-semibold text-lg mb-1" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;">Nyabarongo Bridge</h3>
+          <p class="text-slate-400 text-sm mb-3">A 180m steel-and-concrete bridge spanning the Nyabarongo River, improving connectivity for three districts.</p>
+          <div class="flex items-center gap-4 text-xs text-slate-500">
+            <span class="flex items-center gap-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Southern Province</span>
+            <span>Completed 2022</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════ -->
+<section id="testimonials" style="background: #050d1a;" class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14 reveal">
+      <span class="section-tag mb-4">Testimonials</span>
+      <h2 class="section-title text-white text-5xl md:text-6xl mt-3">What Our <span class="text-orange-400">Clients</span> Say</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="testi-card reveal" style="transition-delay:0s">
+        <div class="flex text-orange-400 mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed italic mb-6">"Prosper Construction exceeded every expectation. Our office complex was delivered two weeks ahead of schedule with exceptional quality. The team's attention to detail and professionalism made the entire process seamless."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">JM</div>
+          <div>
+            <div class="text-white font-semibold text-sm">Jean-Marie Nkurunziza</div>
+            <div class="text-slate-500 text-xs">CEO, Kigali Tech Hub</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="transition-delay:0.15s">
+        <div class="flex text-orange-400 mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed italic mb-6">"We commissioned Prosper for our estate development and couldn't be happier. Their engineering team solved complex terrain challenges brilliantly. The finished villas are simply stunning — our buyers love them."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">AM</div>
+          <div>
+            <div class="text-white font-semibold text-sm">Alice Mukashyaka</div>
+            <div class="text-slate-500 text-xs">Director, Rwandan Realty Ltd</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal" style="transition-delay:0.3s">
+        <div class="flex text-orange-400 mb-4">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed italic mb-6">"The road rehabilitation project undertaken by Prosper has transformed connectivity in our area. Their team was professional, communicated regularly, and delivered a high-quality road that has lasted years without issues."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">PK</div>
+          <div>
+            <div class="text-white font-semibold text-sm">Patrick Kagame</div>
+            <div class="text-slate-500 text-xs">District Engineer, Gasabo</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     CONTACT SECTION
+═══════════════════════════════════════ -->
+<section id="contact" style="background: #0a1628;" class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-14 reveal">
+      <span class="section-tag mb-4">Contact Us</span>
+      <h2 class="section-title text-white text-5xl md:text-6xl mt-3">Let's <span class="text-orange-400">Start</span> Building</h2>
+      <p class="text-slate-400 mt-4 max-w-xl mx-auto">Ready to turn your vision into reality? Reach out today for a free consultation and project quote.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-10">
+
+      <!-- Info + Map -->
+      <div class="lg:col-span-2 space-y-6 reveal-left">
+
+        <!-- Contact Cards -->
+        <div class="glass-card p-5 flex items-start gap-4">
+          <div class="w-11 h-11 bg-orange-500/15 border border-orange-500/25 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Phone</div>
+            <a href="tel:+250799355836" class="text-white font-medium hover:text-orange-400 transition-colors">+250 799 355 836</a>
+          </div>
+        </div>
+
+        <div class="glass-card p-5 flex items-start gap-4">
+          <div class="w-11 h-11 bg-orange-500/15 border border-orange-500/25 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Address</div>
+            <div class="text-white font-medium">KK 15 Road</div>
+            <div class="text-slate-400 text-sm">Kigali, Rwanda</div>
+          </div>
+        </div>
+
+        <div class="glass-card p-5 flex items-start gap-4">
+          <div class="w-11 h-11 bg-orange-500/15 border border-orange-500/25 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Working Hours</div>
+            <div class="text-white font-medium">Mon – Fri: 7:30 AM – 5:30 PM</div>
+            <div class="text-slate-400 text-sm">Sat: 8:00 AM – 1:00 PM</div>
+          </div>
+        </div>
+
+        <!-- Google Maps -->
+        <div class="map-container reveal">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63799.8125906019!2d30.0302609!3d-1.9440728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca4258ed8e797%3A0xa0812e01b58c7cf3!2sKigali%2C%20Rwanda!5e0!3m2!1sen!2s!4v1680000000000!5m2!1sen!2s"
+            width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="lg:col-span-3 reveal-right">
+        <div class="glass-card p-8 md:p-10 rounded-2xl">
+          <h3 class="text-white text-2xl font-bold mb-1" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;letter-spacing:0.02em;">Send us a Message</h3>
+          <p class="text-slate-400 text-sm mb-8">Fill in the form and our team will get back to you within 24 hours.</p>
+
+          <div id="contact-form" class="space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" class="form-input" placeholder="John Doe" />
+              </div>
+              <div>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="john@example.com" />
+              </div>
+            </div>
+            <div>
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" class="form-input" placeholder="+250 700 000 000" />
+            </div>
+            <div>
+              <label for="service">Service Needed</label>
+              <select id="service" class="form-input" style="cursor:pointer;">
+                <option value="" style="background:#0a1628;">Select a service...</option>
+                <option value="building" style="background:#0a1628;">Building Construction</option>
+                <option value="civil" style="background:#0a1628;">Civil Engineering</option>
+                <option value="infrastructure" style="background:#0a1628;">Infrastructure Development</option>
+                <option value="renovation" style="background:#0a1628;">Renovation & Maintenance</option>
+                <option value="other" style="background:#0a1628;">Other / General Inquiry</option>
+              </select>
+            </div>
+            <div>
+              <label for="message">Project Details</label>
+              <textarea id="message" class="form-input" placeholder="Tell us about your project — location, size, timeline, and any specific requirements..."></textarea>
+            </div>
+            <button onclick="submitForm()" class="btn-primary w-full justify-center text-base py-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message & Request Quote
+            </button>
+            <p class="text-slate-500 text-xs text-center">By submitting, you agree to be contacted by our team. No spam, ever.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer style="background: #050d1a; border-top: 1px solid rgba(255,255,255,0.06);" class="pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg flex items-center justify-center shadow-lg">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-bold text-white text-lg leading-none" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;">PROSPER <span class="text-orange-400">CONSTRUCTION</span></div>
+            <div style="font-size:0.6rem;letter-spacing:0.12em;color:#64748b;text-transform:uppercase;">Company Ltd — Kigali, Rwanda</div>
+          </div>
+        </div>
+        <p class="text-slate-500 text-sm leading-relaxed max-w-sm mb-6">Building excellence across Rwanda — from residential homes to critical civil infrastructure. Trusted by homeowners, developers, and government alike.</p>
+        <div class="flex gap-3">
+          <a href="#" aria-label="Facebook" class="w-9 h-9 glass-card rounded-lg flex items-center justify-center text-slate-400 hover:text-orange-400 hover:border-orange-500/30 transition-colors">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="w-9 h-9 glass-card rounded-lg flex items-center justify-center text-slate-400 hover:text-orange-400 transition-colors">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://wa.me/250799355836" target="_blank" aria-label="WhatsApp" class="w-9 h-9 glass-card rounded-lg flex items-center justify-center text-slate-400 hover:text-green-400 transition-colors">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-white font-semibold text-sm uppercase tracking-widest mb-4">Quick Links</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#about" class="footer-link">About Us</a></li>
+          <li><a href="#services" class="footer-link">Our Services</a></li>
+          <li><a href="#projects" class="footer-link">Projects</a></li>
+          <li><a href="#testimonials" class="footer-link">Testimonials</a></li>
+          <li><a href="#contact" class="footer-link">Contact Us</a></li>
+          <li><a href="#contact" class="footer-link">Request a Quote</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-white font-semibold text-sm uppercase tracking-widest mb-4">Contact Info</h4>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2 text-sm">
+            <svg class="text-orange-400 flex-shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="text-slate-400">KK 15 Road, Kigali, Rwanda</span>
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <svg class="text-orange-400 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-5.99-5.99 19.79 19.79 0 01-3.07-8.67A2 2 0 014 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 18v2z"/></svg>
+            <a href="tel:+250799355836" class="text-slate-400 hover:text-orange-400 transition-colors">+250 799 355 836</a>
+          </li>
+          <li class="flex items-center gap-2 text-sm">
+            <svg class="text-orange-400 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:info@prosperconstruction.rw" class="text-slate-400 hover:text-orange-400 transition-colors">info@prosperconstruction.rw</a>
+          </li>
+        </ul>
+        <div class="mt-6 p-3 rounded-lg" style="background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);">
+          <div class="text-xs text-orange-300 font-semibold mb-1">Emergency / Urgent Projects</div>
+          <a href="https://wa.me/250799355836" target="_blank" class="text-white text-sm font-medium hover:text-orange-400 transition-colors flex items-center gap-1">
+            <svg width="13" height="13" fill="#25d366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Us Now
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="border-top: 1px solid rgba(255,255,255,0.06);" class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-slate-600 text-xs">© 2024 Prosper Construction Company Ltd. All rights reserved.</p>
+      <div class="flex items-center gap-1 text-slate-600 text-xs">
+        <span>Designed with</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#f97316"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <span>for Rwanda's Future</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- WhatsApp Float Button -->
+<a id="whatsapp-btn" href="https://wa.me/250799355836?text=Hello!%20I%27m%20interested%20in%20your%20construction%20services." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Chat">
+  <svg width="28" height="28" fill="white" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Toast Notification -->
+<div id="toast">✓ Message sent! We'll contact you within 24 hours.</div>
+
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════ -->
+<script>
+  /* ── PAGE LOADER ─────────────────────── */
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const loader = document.getElementById('page-loader');
+      loader.classList.add('hidden');
+    }, 1900);
+  });
+
+  /* ── NAVBAR SCROLL ───────────────────── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* ── MOBILE MENU ─────────────────────── */
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+  }
+
+  /* ── SCROLL REVEAL ───────────────────── */
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.style.transitionDelay || '0s';
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, parseFloat(delay) * 1000);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  /* ── COUNTER ANIMATION ───────────────── */
+  function animateCounter(el, target, suffix = '') {
+    let start = 0;
+    const duration = 1800;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        const suffix = el.dataset.target === '98' ? '%' : '+';
+        animateCounter(el, target, suffix);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+  /* ── FORM SUBMIT ─────────────────────── */
+  function submitForm() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      const inputs = [
+        { el: document.getElementById('name'), val: name },
+        { el: document.getElementById('email'), val: email },
+        { el: document.getElementById('message'), val: message },
+      ];
+      inputs.forEach(({ el, val }) => {
+        if (!val) {
+          el.style.borderColor = '#ef4444';
+          setTimeout(() => el.style.borderColor = '', 2500);
+        }
+      });
+      return;
+    }
+
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+
+    // Clear form
+    ['name','email','phone','message'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('service').selectedIndex = 0;
+  }
+
+  /* ── SMOOTH SCROLL for anchor links ─── */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
